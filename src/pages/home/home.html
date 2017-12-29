@@ -1,14 +1,56 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+
+  <figure>
+      <img src="assets/imgs/logga.png" width="100%">
+  </figure>
+  
+  <div style="text-align: center">
+      <p>Brf Husarvikens Strand</p>
+  </div>
+    
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  
+  <ion-grid no-lines>
+    <ion-row >
+      <ion-col col-6>
+        <button ion-button small full outline >Taxgatan 3</button>
+      </ion-col> 
+      <ion-col col-6>
+      </ion-col>
+    </ion-row>
+
+    <ion-row >
+      <ion-col col-6>
+        <button ion-button color="husarblue" small full (click)="GotoShowFloor($event, '2', '7 trappor')">7 trappor</button>
+        
+      </ion-col> 
+      <ion-col col-6>
+        <button ion-button small full outline>Taxgatan 7</button>
+      </ion-col>
+    </ion-row>
+    
+
+    <ion-row *ngFor="let row of stairs" >
+      <ion-col col-6>
+        <button ion-button color="husarblue" small full (click)="GotoShowFloor($event, '2', row)">{{row}}</button>
+      </ion-col> 
+      <ion-col col-6>
+        <button ion-button color="husarred" small full (click)="GotoShowFloor($event, '1', row)">{{row}}</button>
+      </ion-col> 
+    </ion-row>
+
+  </ion-grid>
+
 </ion-content>
+
+ 
+<ion-footer>
+<button ion-button full (click)="GotoSearchPage($event)">Sök på namn</button>
+
+<div style="text-align: center">
+    <p>Version 3.0 2017-12-20</p>
+</div>
+ 
+</ion-footer>
