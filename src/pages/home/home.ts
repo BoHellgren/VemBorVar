@@ -11,16 +11,14 @@ import { MembersProvider } from '../../providers/members/members';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  // members: Array<{ lgh: string, lmv: string, membername: string }>;
+ 
   stairs: string[] = ['6 trappor ', '5 trappor ', '4 trappor ', '3 trappor ', '2 trappor ', '1 trappa '];
 
   constructor(public navCtrl: NavController, private membersProvider: MembersProvider) {
-
   }
 
   ionViewDidLoad(): void {
     this.membersProvider.loadMembers();
-   // this.members = this.membersProvider.members;
   }
 
   GotoShowFloor(event, trappHus, row) {
