@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { MembersProvider } from '../../providers/members/members';
+import { ShowFloorPage } from '../show-floor/show-floor';
 
-@IonicPage({
-  defaultHistory: ['HomePage']
-})
+
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html',
@@ -17,23 +16,23 @@ export class SearchPage {
     this.hits = this.membersProvider.members;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
-  }
-
   getItems(ev: any) {
-
+    this.hits = this.membersProvider.members;
     let val = ev.target.value;
     if (val && val.trim() != '') {
       this.hits = this.hits.filter((member) => {
-        return (member.membername.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (
+          (member.membername.toLowerCase().indexOf(val.toLowerCase()) > -1)
+          || (member.lgh.toLowerCase().indexOf(val.toLowerCase()) > -1)
+          || (member.lmv.toLowerCase().indexOf(val.toLowerCase()) > -1)
+        );
       })
     }
   }
 
   itemTapped(event, lgh) {
     var mask = lgh.substring(0, 2);
-    this.navCtrl.push('ShowFloorPage', mask);
+    this.navCtrl.push(ShowFloorPage, mask);
   }
 
   GoBack(event) {

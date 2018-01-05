@@ -6,6 +6,10 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+import { SearchPage } from '../pages/search/search';
+import { ShowFloorPage } from '../pages/show-floor/show-floor';
+
 import { MembersProvider } from '../providers/members/members';
 
 // AF2 Settings
@@ -20,22 +24,28 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    HomePage,
+    SearchPage,
+    ShowFloorPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, {preloadModules: true}),
+    IonicModule.forRoot(MyApp),
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    HomePage,
+    SearchPage,
+    ShowFloorPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MembersProvider
-  ]
+    ]
 })
 export class AppModule {}
