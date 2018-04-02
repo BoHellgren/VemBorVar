@@ -1,18 +1,40 @@
-<!--
-  Generated template for the ShowFloorPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>ShowFloor</ion-title>
-  </ion-navbar>
+  <figure>
+      <img src="assets/imgs/logga.png" width="100%">
+  </figure>
+  <div style="text-align: center">
+      <p>Brf Husarvikens Strand</p>
+  </div>
+  
+    <ion-title>
 
+    <ion-row>
+      <ion-col col-4>{{streetAddr}}</ion-col>
+      <ion-col col-4></ion-col>
+      <ion-col col-4>{{floorName}}</ion-col>
+    </ion-row>
+    </ion-title>
+  
 </ion-header>
 
+<ion-content>
 
-<ion-content padding>
+  
+<ion-grid>
+    <ion-row *ngFor="let member of liveHere" >
+   	  <ion-col col-1></ion-col>
+      <ion-col col-2>{{member.lgh}}</ion-col>
+      <ion-col col-2>{{member.lmv}}</ion-col>
+      <ion-col col-7>{{member.membername}}</ion-col>
+     </ion-row>
+</ion-grid>
+
 
 </ion-content>
+
+<ion-footer>
+<button ion-button icon-left (click)="GoBack($event)"><ion-icon name="arrow-round-back"></ion-icon>Tillbaks</button>
+<button ion-button icon-right *ngIf="floorNum < 7" (click)="GoUp($event)">Upp<ion-icon name="arrow-round-up"></ion-icon></button>
+<button ion-button icon-right *ngIf="floorNum > 1" (click)="GoDown($event)">Ner<ion-icon name="arrow-round-down"></ion-icon></button>
+</ion-footer>
